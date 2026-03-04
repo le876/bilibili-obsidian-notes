@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.venv/
+venv/
+.env
+.env.*
+pip-wheel-metadata/
+dist/
+build/
+*.egg-info/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets / Auth artifacts
+BBDown.data
+qrcode.png
+
+# Media / Downloads (do not commit)
+*.mp4
+*.mkv
+*.webm
+*.flv
+*.m4s
+*.mp3
+*.aac
+*.wav
+
+# Skill outputs (repo-local)
+video-notes/
+video-notes-images/
+_resources/
+.tmp/
+.tmp*/
+.tmp_bili_*
+.tmp_bili_vtt.vtt
+
+# Logs
+*.log
+

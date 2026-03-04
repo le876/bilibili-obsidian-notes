@@ -1,0 +1,6 @@
+[features]
+multi_agent = true
+
+[agents.media-note-writer]
+description = "高质量字幕转学习笔记子代理：配套讲义式写作（更可读/启发），结构化分节，Media Extend 时间戳格式，关键公式与符号释义。"
+config_file = "agents/media-note-writer.toml"
