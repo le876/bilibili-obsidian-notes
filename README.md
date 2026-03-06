@@ -17,6 +17,27 @@
 - 在关键时间点截图，补充定义、推导说明、易错点与上下文解释
 - 只拉字幕做离线复用，或只做截图定位某个时间点的内容
 
+## 工作流总览
+
+```mermaid
+flowchart TD
+    start["输入 Bilibili 视频 URL"] --> auth{"需要登录态或付费权限？"}
+    auth -- "是" --> qr["运行 bili_qr_login.py<br/>生成或更新 BBDown.data"]
+    auth -- "否" --> subtitle_check{"是否先单独拉字幕？"}
+    qr --> subtitle_check
+    subtitle_check -- "是" --> subtitle["运行 bili_fetch_subtitle.py<br/>验证字幕可用并导出 .json/.txt/.vtt/.srt"]
+    subtitle_check -- "否" --> notes["运行 bili_vision_notes.py<br/>生成笔记骨架并提取关键帧"]
+    subtitle --> notes
+    notes --> outputs["产出 Markdown 笔记、关键帧图片和临时目录"]
+    outputs --> refine["结合关键帧与字幕<br/>整理公式、定义、推导链条和补充说明"]
+    refine --> snapshot_check{"是否还需要补抓某个时间点？"}
+    snapshot_check -- "是" --> snapshot["运行 bili_snapshot.py<br/>单独截图并回填 Obsidian 笔记"]
+    snapshot_check -- "否" --> done["完成可复习的 Obsidian 学习笔记"]
+    snapshot --> done
+```
+
+完整文字版说明见 `docs/workflow.md`。
+
 ## 安装（Windows / PowerShell）
 
 当前 skill 的公开名称和 GitHub 仓库名都已经统一为 `bilibili-obsidian-notes`。
